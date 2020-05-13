@@ -4,15 +4,20 @@ files:
   - source: /dist/
     destination: /var/www/html/
 hooks:
-  ApplicationStop:
-    - location: scripts/stop_httpd.sh
+ApplicationStop:
+    - location: scripts/stop_server
       timeout: 300
       runas: root
   BeforeInstall:
-    - location: scripts/undeploy_oldfiles.sh 
+    - location: scripts/install_dependencies
       timeout: 300
       runas: root
   ApplicationStart:
-    - location: scripts/start_httpd.sh
+    - location: scripts/start_server
       timeout: 300
       runas: root
+
+
+
+
+
